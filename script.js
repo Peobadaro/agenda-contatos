@@ -1,29 +1,52 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const formAgenda = document.getElementById("form-agenda");
-    const nomeInput = document.getElementById("nome");
-    const telefoneInput = document.getElementById("telefone");
-    const tabelaContatos = document.getElementById("tabela-contatos").querySelector("tbody");
+// Seleção dos elementos do DOM
+const form = document.querySelector("#form-agenda");
+const tabelaCorpo = document.querySelector("#tabela-corpo");
+const nomeInput = document.querySelector("#nome");
+const emailInput = document.querySelector("#email");
+const telefoneInput = document.querySelector("#telefone");
 
-    const btnCadastrar = document.getElementById("btn-cadastrar");
-    
-    btnCadastrar.addEventListener("click", () => {
-        const nome = nomeInput.value.trim();
-        const telefone = telefoneInput.value.trim();
+// Evento para o botão cadastrar
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // Previne o comportamento padrão de recarregar a página
 
-        if (!nome || !telefone) {
-            alert("Por favor, preencha todos os campos!");
-            return;
-        }
+  // Captura dos valores dos inputs
+  const nome = nomeInput.value.trim();
+  const email = emailInput.value.trim();
+  const telefone = telefoneInput.value.trim();
 
-        const novaLinha = document.createElement("tr");
-        novaLinha.innerHTML = `
-            <td>${nome}</td>
-            <td>${telefone}</td>
-        `;
+  // Validação dos campos
+  if (nome === "" || email === "" || telefone === "") {
+    alert("Por favor, preencha todos os campos antes de cadastrar um contato.");
+    return;
+  }
 
-        tabelaContatos.appendChild(novaLinha);
+  // Adiciona os dados na tabela
+  adicionarContato(nome, email, telefone);
 
-        nomeInput.value = "";
-        telefoneInput.value = "";
-    });
+  // Limpa os campos do formulário
+  nomeInput.value = "";
+  emailInput.value = "";
+  telefoneInput.value = "";
 });
+
+// Função para adicionar contato na tabela
+definirContato(tabelaCorpo);
+function adicionarContato(nome, email, telefone) {
+  // Criação de uma nova linha na tabela
+  const novaLinha = document.createElement("tr");
+
+  // Inserção dos dados na nova linha
+  novaLinha.innerHTML = `
+    <td>${nome}</td>
+    <td>${email}</td>
+    <td>${telefone}</td>
+  `;
+
+  // Adiciona a nova linha na tabela
+  tabelaCorpo.appendChild(novaLinha);
+}
+
+// Função para limpar tabela de contatos (caso seja necessário no futuro)
+function limparTabela() {
+  tabelaCorpo.innerHTML = "";
+}

@@ -7,34 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Agenda de Contatos</h1>
-    </header>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="Imagens/PB-branco.png" alt="Logo PB" class="logo">
+            <h2>Projeto 2 - Agenda de Contatos</h2>
+            <p>Projeto criado apenas para fins educacionais.</p>
+            <p>Todo o conteúdo, incluindo textos e imagens, é fictício e foi utilizado sob licença livre.</p>
+            <p>&lt;/&gt; by Pedro Badaró</p>
+        </aside>
 
-    <main>
-        <form id="form-agenda">
-            <input type="text" id="nome" placeholder="Nome" required>
-            <input type="tel" id="telefone" placeholder="Telefone" required>
-            <button type="button" id="btn-cadastrar">Cadastrar</button>
-        </form>
+        <!-- Formulário e Conteúdo -->
+        <main class="content">
+            <header>
+                <h1>Agenda de Contatos</h1>
+            </header>
 
-        <table id="tabela-contatos">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Contatos serão adicionados dinamicamente aqui -->
-            </tbody>
-        </table>
-    </main>
+            <!-- Formulário -->
+            <form id="contact-form">
+                <label for="name">Nome*</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
 
-    <footer>
-        &copy; 2025 Agenda de Contatos
-    </footer>
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
 
+                <label for="phone">Telefone*</label>
+                <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone" required>
+
+                <button type="submit" id="submit-btn">Cadastrar</button>
+            </form>
+
+            <!-- Botões Sociais -->
+            <div class="social-buttons">
+                <button class="social-btn">
+                    <img src="Imagens/botao-google.png" alt="Google">
+                </button>
+                <button class="social-btn">
+                    <img src="Imagens/botao-apple.png" alt="Apple">
+                </button>
+                <button class="social-btn">
+                    <img src="Imagens/botao-microsoft.png" alt="Microsoft">
+                </button>
+            </div>
+
+            <!-- Tabela -->
+            <section id="contact-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contact-table-body">
+                        <!-- Os contatos cadastrados aparecerão aqui -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
