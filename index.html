@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: white;
+        }
+        .left-section {
+            background-color: #2a62ff;
+            color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .left-section h1 {
+            font-size: 46px;
+            margin: 0;
+        }
+        .left-section .footer-text {
+            position: absolute;
+            bottom: 10px;
+            font-size: 10px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 63px;
+            height: 63px;
+        }
+        .project-title {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .right-section {
+            flex: 1;
+            padding: 40px;
+        }
+        .right-section h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        button {
+            padding: 10px;
+            background-color: #2a62ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #204bbf;
+        }
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+    <script>
+        function addContact(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            if (name && email && phone) {
+                const tableBody = document.querySelector('table tbody');
+                const newRow = document.createElement('tr');
+
+                newRow.innerHTML = `
+                    <td>${name}</td>
+                    <td>${email}</td>
+                    <td>${phone}</td>
+                `;
+
+                tableBody.appendChild(newRow);
+
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('phone').value = '';
+            } else {
+                alert('Por favor, preencha todos os campos!');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo-container">
+                <img src="Imagens/PB-branco.png" alt="PB" class="logo">
+                <span class="project-title">Projeto 2 - Agenda de Contatos</span>
+            </div>
+            <div class="footer-text">
+                Projeto criado apenas para fins educacionais.<br>
+                Todo o conteúdo, incluindo textos e imagens, é fictício e foi utilizado sob licença livre.<br>
+                <code>&lt;/&gt; by Pedro Badaró • 2025</code>
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Agenda de Contatos</h2>
+            <form onsubmit="addContact(event)">
+                <label for="name">Nome*</label>
+                <input type="text" id="name" placeholder="Digite seu nome">
+
+                <label for="email">Email*</label>
+                <input type="email" id="email" placeholder="Digite seu email">
+
+                <label for="phone">Telefone*</label>
+                <input type="tel" id="phone" placeholder="Digite seu telefone">
+
+                <button type="submit">Cadastrar</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
